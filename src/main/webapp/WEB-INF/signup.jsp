@@ -41,7 +41,7 @@
                 <button
                         id="signup"
                         name="signup"
-                        class="btn btn-primary">Sign-Up
+                        class="btn btn-success">Sign-Up
                 </button>
             </div>
         </div>

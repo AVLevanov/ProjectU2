@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet({Go.ROOT, Go.EDIT_USER, Go.SIGNUP, Go.START_PAGE, Go.LIST_USERS, Go.PROFILE})
+@WebServlet({Go.ROOT, Go.EDIT_USER, Go.SIGNUP, Go.LOGIN, Go.START_PAGE, Go.LIST_USERS, Go.PROFILE})
 public class FrontController extends HttpServlet {
 
     private final HttpResolver httpResolver = Winter.find(HttpResolver.class);
