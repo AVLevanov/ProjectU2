@@ -30,10 +30,8 @@ public class UserRepository implements Repository<User> {
     }
 
     public Optional<User> get(String login, String password) {
-        Iterator<Map.Entry<Long, User>> iterator = map.entrySet().iterator();
-        while (iterator.hasNext()){
-            Map.Entry<Long, User> entry = iterator.next();
-            if (entry.getValue().getLogin().equals(login) && entry.getValue().getPassword().equals(password)){
+        for (Map.Entry<Long, User> entry : map.entrySet()) {
+            if (entry.getValue().getLogin().equals(login) && entry.getValue().getPassword().equals(password)) {
                 return Optional.of(entry.getValue());
             }
         }
