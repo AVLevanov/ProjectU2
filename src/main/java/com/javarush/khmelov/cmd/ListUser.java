@@ -23,5 +23,4 @@ public class ListUser implements Command {
         return getView();
     }
 
-
 }

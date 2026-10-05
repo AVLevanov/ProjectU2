@@ -8,4 +8,5 @@ public class Go {
     public static final String SIGNUP = "/signup";
     public static final String LOGIN = "/login";
     public static final String PROFILE = "/profile";
+    public static final String QUESTS = "/quests";
 }

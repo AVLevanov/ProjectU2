@@ -3,13 +3,24 @@ package com.javarush.khmelov.entity;
 import java.util.LinkedList;
 
 public class Quest extends Entity {
-    String Description;
+    String description;
     LinkedList<Question> questions;
     User author;
 
-    public Quest(Long id, String description, LinkedList<Question> questions) {
+    public User getAuthor() {
+        return author;
+    }
+
+    public LinkedList<Question> getQuestions() {
+        return questions;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Quest(Long id, String description) {
         this.id = id;
-        this.Description = description;
-        this.questions = questions;
+        this.description = description;
     }
 }

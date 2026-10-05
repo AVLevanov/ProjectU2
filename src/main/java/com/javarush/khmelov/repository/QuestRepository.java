@@ -1,21 +1,22 @@
 package com.javarush.khmelov.repository;
 
 import com.javarush.khmelov.entity.Quest;
+
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class QuestRepository implements Repository<Quest>{
+public class QuestRepository implements Repository<Quest> {
 
     public static final AtomicLong id = new AtomicLong(System.currentTimeMillis());
+    private final Map<Long, Quest> map = new HashMap<>();
 
     public QuestRepository() {
-        Map<Long, Quest> map = new HashMap<>();
-        map.put(1L, new Quest(1L, "Похищение пришельцами", new LinkedList<>()));
+        map.put(1L, new Quest(1L, "Похищение пришельцами"));
     }
 
     @Override
     public Collection<Quest> getAll() {
-        return List.of();
+        return map.values();
     }
 
     @Override
