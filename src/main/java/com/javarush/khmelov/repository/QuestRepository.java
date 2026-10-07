@@ -11,7 +11,7 @@ public class QuestRepository implements Repository<Quest> {
     private final Map<Long, Quest> map = new HashMap<>();
 
     public QuestRepository() {
-        map.put(1L, new Quest(1L, "Похищение пришельцами"));
+        map.put(1L, new Quest(1L, "Похищение пришельцами", "Внеземной разум вступил с тобой в контакт и тебе нужно не ударить в грязь лицом"));
     }
 
     @Override
