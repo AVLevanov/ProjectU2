@@ -12,12 +12,15 @@
     <c:if test="${sessionScope.user == null}">
         <a href="login">Войти</a>
         <a> в систему</a>
-<!--        <a>Вы не вошли в систему</a>-->
+        <br/>
     </c:if>
+
     <c:if test="${sessionScope.user != null}">
         <a>Вы вошли как ${sessionScope.user.login}</a>
+        <form action="logout" method="post">
+            <button type="submit" id="logout" class="btn btn-warning">Logout</button>
+        </form>
     </c:if>
-    <br/>
 
     <a href="list-user">Пользователи</a>
     <a href="quests">Квесты</a>

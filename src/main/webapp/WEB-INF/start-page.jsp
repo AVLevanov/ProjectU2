@@ -1,19 +1,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="head.jsp" %>
 <body>
-<form class="form-horizontal">
-    <fieldset>
-        <!-- Button -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="login"></label>
-            <div class="col-md-4">
-                <button type="button" id="login" class="btn btn-primary"
-                        onclick="window.location.href='login'">Login
-                </button>
+
+
+<c:if test="${sessionScope.user == null}">
+    <form class="form-horizontal">
+        <fieldset>
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="login"></label>
+                <div class="col-md-4">
+                    <button type="button" id="login" class="btn btn-primary"
+                            onclick="window.location.href='login'">Login
+                    </button>
+                </div>
             </div>
-        </div>
-    </fieldset>
-</form>
+        </fieldset>
+    </form>
+</c:if>
 
 <form class="form-horizontal">
     <fieldset>
@@ -28,5 +32,6 @@
         </div>
     </fieldset>
 </form>
+
 
 </body>
