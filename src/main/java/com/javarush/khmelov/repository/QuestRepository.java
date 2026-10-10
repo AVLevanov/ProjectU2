@@ -21,7 +21,7 @@ public class QuestRepository implements Repository<Quest> {
 
     @Override
     public Optional<Quest> get(long id) {
-        return Optional.empty();
+        return Optional.ofNullable(map.get(id));
     }
 
     @Override

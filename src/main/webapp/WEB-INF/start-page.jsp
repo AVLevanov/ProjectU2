@@ -1,19 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="head.jsp" %>
 <body>
-
-
-    <c:if test="${sessionScope.user == null}">
-        <p>Вы не вошли в систему</p>
-    </c:if>
-    <c:if test="${sessionScope.user != null}">
-        <p>Вы вошли как ${sessionScope.user.login}</p>
-    </c:if>
-
-<br/>
-<a href="list-user">Users</a>
-<a href="quests">Quests</a>
-
 <form class="form-horizontal">
     <fieldset>
         <!-- Button -->

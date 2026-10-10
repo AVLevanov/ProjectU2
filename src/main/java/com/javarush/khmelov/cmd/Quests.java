@@ -13,6 +13,7 @@ public class Quests implements Command{
     public Quests(QuestService questService) {
         this.questService = questService;
     }
+
     @Override
     public String doGet(HttpServletRequest request) {
         Collection<Quest> quests = questService.getAll();

@@ -1,25 +1,24 @@
 package com.javarush.khmelov.entity;
 
-import java.util.Set;
+import lombok.Getter;
 
-public class Question extends Entity{
-    Quest quest;
-    String text;
-    Set<Answer> answers;
+import java.util.HashSet;
+import java.util.LinkedList;
 
-    public Quest getQuest() {
-        return quest;
-    }
+@Getter
+public class Question extends Entity {
+    private final Long questId;
+    private final String text;
+    private final LinkedList<Answer> answers;
 
-    public String getText() {
-        return text;
-    }
-
-    public Set<Answer> getAnswers() {
-        return answers;
-    }
-
-    public Question(String text) {
+    public Question(Long id, Long questId, String text) {
+        this.id = id;
+        this.questId = questId;
         this.text = text;
+        this.answers = new LinkedList<>();
+    }
+
+    public void setAnswer(Answer answer){
+        this.answers.add(answer);
     }
 }

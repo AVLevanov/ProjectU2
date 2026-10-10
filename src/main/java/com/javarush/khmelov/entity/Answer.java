@@ -1,23 +1,16 @@
 package com.javarush.khmelov.entity;
 
-public class Answer extends Entity{
-    Question question;
-    String text;
-    State state;
+import lombok.Getter;
 
-    public Question getQuestion() {
-        return question;
-    }
+@Getter
+public class Answer extends Entity {
+    private final Long questionId;
+    private final String text;
+    private final State state;
 
-    public String getText() {
-        return text;
-    }
-
-    public State getState() {
-        return state;
-    }
-
-    public Answer(String text, State state) {
+    public Answer(Long id, Long questionId, String text, State state) {
+        this.id = id;
+        this.questionId = questionId;
         this.text = text;
         this.state = state;
     }

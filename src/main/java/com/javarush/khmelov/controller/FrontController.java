@@ -1,6 +1,7 @@
 package com.javarush.khmelov.controller;
 
 import com.javarush.khmelov.cmd.Command;
+import com.javarush.khmelov.config.Config;
 import com.javarush.khmelov.config.Winter;
 import com.javarush.khmelov.entity.Role;
 import com.javarush.khmelov.util.Go;
@@ -14,10 +15,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet({Go.ROOT, Go.EDIT_USER, Go.SIGNUP, Go.LOGIN, Go.START_PAGE, Go.LIST_USERS,Go.QUESTS, Go.PROFILE})
+@WebServlet({Go.ROOT, Go.EDIT_USER, Go.SIGNUP, Go.LOGIN, Go.START_PAGE, Go.LIST_USERS, Go.QUESTS, Go.PLAY_QUEST, Go.PROFILE})
 public class FrontController extends HttpServlet {
 
     private final HttpResolver httpResolver = Winter.find(HttpResolver.class);
+    private final Config config = Winter.find(Config.class);
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,8 +31,9 @@ public class FrontController extends HttpServlet {
     }
 
     @Override
-    public void init(ServletConfig config) {
-        config.getServletContext().setAttribute(Parameter.ROLES, Role.values());
+    public void init(ServletConfig servletConfig) {
+        servletConfig.getServletContext().setAttribute(Parameter.ROLES, Role.values());
+        config.init();
     }
 
     private static String getJsp(String view) {
