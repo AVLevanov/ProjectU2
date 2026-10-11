@@ -6,55 +6,51 @@ import com.javarush.khmelov.entity.User;
 import com.javarush.khmelov.repository.GameRepository;
 import com.javarush.khmelov.repository.UserRepository;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class StatisticService {
     private final GameRepository gameRepository;
     private final UserRepository userRepository;
-    private Map<User, ArrayList<Integer>> map = new HashMap<>();
 
     public StatisticService(GameRepository gameRepository, UserRepository userRepository) {
         this.gameRepository = gameRepository;
         this.userRepository = userRepository;
     }
 
-    public Map<User, ArrayList<Integer>> getCommonStat() {
+    public Map<User, Map<State, Integer>> getCommonStat() {
+        Map<User, Map<State, Integer>> userStateStat = new HashMap<>();
         for (User user : userRepository.getAll()) {
-            map.put(user, getUserStat(user, gameRepository));
+            userStateStat.put(user, getUserStat(user, gameRepository));
         }
-        return map;
+        return userStateStat;
     }
 
-    public ArrayList<Integer> getUserStat(User user, GameRepository gameRepository) {
-        ArrayList<Integer> userStat = new ArrayList<>();
+    private Map<State, Integer> getUserStat(User user, GameRepository gameRepository) {
         Collection<Game> games = gameRepository.getAll();
-//        Collection<Game> userGames = null;
-//        for (Game game : games) {
-//            if (game.getUser().equals(user)) {
-//                userGames.add(game);
-//            }
-//        }
-        int play = 0;
-        int win = 0;
-        int loss = 0;
-        for (Game game : games) {
-            if (game.getState().equals(State.PLAY) && game.getUser().equals(user)) {
-                play = play + 1;
-            } else if (game.getState().equals(State.WIN) && game.getUser().equals(user)) {
-                win = win + 1;
-            } else if (game.getState().equals(State.LOSS) && game.getUser().equals(user)) {
-                loss = loss + 1;
-            }
+        Map<State, Integer> stateMap = new HashMap<>();
+        Arrays.stream(State.values())
+                .distinct()
+                .forEach(state -> {
+                    stateMap.put(state, 0);
+                });
+        games.stream()
+                .filter(game -> game.getUser().equals(user))
+                .forEach(game -> {
+                    stateMap.keySet().stream().filter(state -> state == game.getState())
+                            .forEach(state -> {
+                                stateMap.put(state, stateMap.get(state) + 1);
+                            });
+                });
+        return stateMap;
+    }
+
+    public Map<User, Integer> getUserTotalStat() {
+        Map<User, Integer> userTotalStat = new HashMap<>();
+        for (User user : userRepository.getAll()) {
+            int sum = getUserStat(user, gameRepository).values().stream().mapToInt(Integer::intValue).sum();
+            userTotalStat.put(user, sum);
         }
-        int total = play + win + loss;
-        userStat.add(play);
-        userStat.add(win);
-        userStat.add(loss);
-        userStat.add(total);
-        return userStat;
+        return userTotalStat;
     }
 }
 

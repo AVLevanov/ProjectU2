@@ -15,7 +15,8 @@ public class Parameter {
     public static final String PASSWORD = "password";
     public static final String ROLE = "role";
     public static final String ROLES = "roles";
-    public static final String STAT = "stat";
+    public static final String USER_STAT = "userStat";
+    public static final String TOTAL_STAT = "totalStat";
     public static final String GAME_ID = "gameId";
     public static final String GAME = "game";
 

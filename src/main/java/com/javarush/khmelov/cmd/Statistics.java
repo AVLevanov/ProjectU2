@@ -1,11 +1,11 @@
 package com.javarush.khmelov.cmd;
 
+import com.javarush.khmelov.entity.State;
 import com.javarush.khmelov.entity.User;
 import com.javarush.khmelov.service.StatisticService;
 import com.javarush.khmelov.util.Parameter;
 import jakarta.servlet.http.HttpServletRequest;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 public class Statistics implements Command {
@@ -17,8 +17,10 @@ public class Statistics implements Command {
 
     @Override
     public String doGet(HttpServletRequest req) {
-    Map<User, ArrayList<Integer>> map = statisticService.getCommonStat();
-    req.setAttribute(Parameter.STAT, map);
+        Map<User, Map<State, Integer>> userStat = statisticService.getCommonStat();
+        req.setAttribute(Parameter.USER_STAT, userStat);
+        Map<User, Integer> totalStat = statisticService.getUserTotalStat();
+        req.setAttribute(Parameter.TOTAL_STAT, totalStat);
         return getView();
     }
 }
