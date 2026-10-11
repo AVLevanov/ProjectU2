@@ -8,11 +8,11 @@ import java.util.LinkedList;
 public class Quest extends Entity {
     private final String name;
     private final String description;
-    private LinkedList<Question> questions;
+    private final LinkedList<Question> questions;
     private User author;
 
     public Quest(Long id, String name, String description) {
-        this.id = id; // разобраться как использовать id из Entity
+        this.id = id;
         this.name = name;
         this.description = description;
         this.questions = new LinkedList<>();

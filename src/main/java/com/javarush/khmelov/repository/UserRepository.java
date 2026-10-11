@@ -16,7 +16,6 @@ public class UserRepository implements Repository<User> {
         map.put(1L, new User(1L, "Alisa", "qwerty", Role.USER));
         map.put(2L, new User(2L, "Bob", "", Role.GUEST));
         map.put(3L, new User(3L, "Carl", "admin", Role.ADMIN));
-        map.put(4L, new User(4L, "Khmelov", "admin", Role.ADMIN));
     }
 
     @Override

@@ -2,22 +2,24 @@
 <%@include file="head.jsp"%>
 
 <!-- State -->
-<c:if test="${requestScope.state == 'WIN'}">
+<c:if test="${requestScope.game.state == 'WIN'}">
     <a>Победа</a>
 </c:if>
-<c:if test="${requestScope.state == 'LOSS'}">
+<c:if test="${requestScope.game.state == 'LOSS'}">
     <a>Поражение</a>
 </c:if>
 
 
-<c:if test="${requestScope.state == null || requestScope.state == 'PLAY'}">
+<c:if test="${requestScope.game.state == null || requestScope.game.state == 'PLAY'}">
 
     <form class="form-horizontal" action="play-quest" method="get">
         <fieldset>
 
             <!-- Form Name -->
-            <input type="hidden" name="id" value="${requestScope.quest.id}">
+            <input type="hidden" name="questId" value="${requestScope.quest.id}">
             <input type="hidden" name="questionId" value="${requestScope.question.id}">
+            <input type="hidden" name="gameId" value="${requestScope.game.id}">
+            <input type="hidden" name="state" value="${requestScope.state}">
             <legend>"${requestScope.quest.name}"</legend>
 
             <!-- Multiple Answer -->
@@ -45,7 +47,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="answer"></label>
                 <div class="col-md-4">
-                    <button id="answer" name="" class="btn btn-primary">Answer</button>
+                    <button id="answer" name="" class="btn btn-primary">Ответить</button>
                 </div>
             </div>
 
