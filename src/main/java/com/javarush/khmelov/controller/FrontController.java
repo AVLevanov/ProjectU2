@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet({Go.ROOT, Go.LIST_USERS, Go.QUESTS, Go.STATISTICS,
-        Go.SIGNUP, Go.LOGIN, Go.LOGOUT, Go.EDIT_USER, Go.PROFILE,
+        Go.SIGNUP, Go.LOGIN, Go.LOGOUT, Go.EDIT_USER,
         Go.START_PAGE, Go.PLAY_QUEST})
 public class FrontController extends HttpServlet {
 
@@ -43,7 +43,7 @@ public class FrontController extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Command command = httpResolver.resolve(req);
         String redirect = command.doPost(req);
         resp.sendRedirect(redirect);

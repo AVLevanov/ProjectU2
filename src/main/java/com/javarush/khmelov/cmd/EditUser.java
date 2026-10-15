@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 
-@SuppressWarnings("unused")
 public class EditUser implements Command {
 
     private final UserService userService;
@@ -25,10 +24,7 @@ public class EditUser implements Command {
         if (stringId != null) {
             long id = Long.parseLong(stringId);
             Optional<User> optionalUser = userService.get(id);
-            if (optionalUser.isPresent()) {
-                User user = optionalUser.get();
-                req.setAttribute(Parameter.USER, user);
-            }
+            optionalUser.ifPresent(user -> req.setAttribute(Parameter.USER, user));
         }
         return getView();
     }

@@ -8,7 +8,6 @@ public class Go {
     public static final String SIGNUP = "/signup";
     public static final String LOGIN = "/login";
     public static final String LOGOUT = "/logout";
-    public static final String PROFILE = "/profile";
     public static final String PLAY_QUEST = "/play-quest";
     public static final String QUESTS = "/quests";
     public static final String STATISTICS = "/statistics";

@@ -2,7 +2,6 @@ package com.javarush.khmelov.entity;
 
 import lombok.Getter;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 
 @Getter

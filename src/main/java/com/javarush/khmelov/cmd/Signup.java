@@ -26,7 +26,6 @@ public class Signup implements Command {
         userService.create(user);
         HttpSession session = req.getSession();
         session.setAttribute(Parameter.USER, user);
-        return Go.PROFILE;
-//        return getView() + "?id=" + user.getId();
+        return Go.START_PAGE;
     }
 }
